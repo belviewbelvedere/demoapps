@@ -40,13 +40,17 @@ export default function KPIDashboard() {
 
   return (
     <div className="glass-panel p-4 rounded-xl w-72 max-h-[calc(100vh-120px)] overflow-y-auto custom-scrollbar">
-      <div className="flex items-center justify-between mb-3">
+      <div className={`sticky top-0 z-10 -mx-4 px-4 pb-2 pt-1 mb-3 border-b ${isDark ? 'bg-slate-900/90 border-slate-700' : 'bg-white/90 border-slate-200'} backdrop-blur-sm flex items-center justify-between`}>
         <h3 className={`text-xs font-semibold uppercase tracking-wider ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>
           KPI Dashboard
         </h3>
         <button
           onClick={toggleKPIPanel}
-          className={`text-sm ${isDark ? 'text-slate-500 hover:text-slate-300' : 'text-slate-400 hover:text-slate-600'}`}
+          className={`h-8 w-8 rounded-md text-base font-bold flex items-center justify-center ${
+            isDark
+              ? 'bg-slate-800 text-slate-200 hover:bg-slate-700'
+              : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+          }`}
           title="Close KPI Dashboard"
           aria-label="Close KPI Dashboard"
         >
