@@ -7,6 +7,8 @@ import { useWarehouseStore } from '@/store/warehouseStore';
 
 export default function App() {
   const theme = useWarehouseStore((s) => s.theme);
+  const showKPIPanel = useWarehouseStore((s) => s.showKPIPanel);
+  const toggleKPIPanel = useWarehouseStore((s) => s.toggleKPIPanel);
   const isDark = theme === 'dark';
 
   return (
@@ -24,6 +26,21 @@ export default function App() {
       <div className="absolute top-20 right-3 z-10">
         <KPIDashboard />
       </div>
+
+      {showKPIPanel && (
+        <button
+          onClick={toggleKPIPanel}
+          className={`absolute top-24 right-4 z-30 h-10 w-10 rounded-full border text-lg font-bold shadow-lg ${
+            isDark
+              ? 'bg-slate-900/95 text-white border-slate-600'
+              : 'bg-white/95 text-slate-800 border-slate-300'
+          }`}
+          aria-label="Close KPI Dashboard"
+          title="Close KPI Dashboard"
+        >
+          ✕
+        </button>
+      )}
 
       <div className="absolute bottom-3 right-3 z-10">
         <LocationDetailPanel />
