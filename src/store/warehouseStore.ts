@@ -73,7 +73,7 @@ export const useWarehouseStore = create<WarehouseState>((set, get) => ({
   selectedLocationId: null,
   searchQuery: '',
   highlightedLocations: [],
-  showKPIPanel: true,
+  showKPIPanel: false,
   theme: 'dark' as const,
 
   ...initialComputed,
