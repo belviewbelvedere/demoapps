@@ -18,6 +18,7 @@ const PIE_COLORS = ['#3b82f6', '#22c55e', '#f59e0b', '#ef4444', '#8b5cf6', '#06b
 export default function KPIDashboard() {
   const kpis = useWarehouseStore((s) => s.kpis);
   const showKPIPanel = useWarehouseStore((s) => s.showKPIPanel);
+  const toggleKPIPanel = useWarehouseStore((s) => s.toggleKPIPanel);
   const theme = useWarehouseStore((s) => s.theme);
   const isDark = theme === 'dark';
 
@@ -39,9 +40,19 @@ export default function KPIDashboard() {
 
   return (
     <div className="glass-panel p-4 rounded-xl w-72 max-h-[calc(100vh-120px)] overflow-y-auto custom-scrollbar">
-      <h3 className={`text-xs font-semibold uppercase tracking-wider mb-3 ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>
-        KPI Dashboard
-      </h3>
+      <div className="flex items-center justify-between mb-3">
+        <h3 className={`text-xs font-semibold uppercase tracking-wider ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>
+          KPI Dashboard
+        </h3>
+        <button
+          onClick={toggleKPIPanel}
+          className={`text-sm ${isDark ? 'text-slate-500 hover:text-slate-300' : 'text-slate-400 hover:text-slate-600'}`}
+          title="Close KPI Dashboard"
+          aria-label="Close KPI Dashboard"
+        >
+          ✕
+        </button>
+      </div>
 
       <div className="grid grid-cols-2 gap-2 mb-4">
         <KPICard label="Total Locations" value={kpis.totalLocations} isDark={isDark} />
